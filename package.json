@@ -12,6 +12,7 @@
     "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "swr": "^2.0.0"
+    "swr": "^2.0.0",
+    "sleep-promise": "^9.1.0",
   }
 }
