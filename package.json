@@ -8,9 +8,11 @@
     "dev": "next dev"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.689.0",
     "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "swr": "^2.0.0"
+    "swr": "^2.0.0",
+    "sleep-promise": "^9.1.0"
   }
 }
