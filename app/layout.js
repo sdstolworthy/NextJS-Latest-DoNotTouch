@@ -3,6 +3,8 @@ import "../styles/layout.css";
 import { after } from 'next/server'
 import {S3Client, GetObjectCommand} from "@aws-sdk/client-s3"
 
+export const dynamic = "force-dynamic";
+
 export default async function App({ children }) {
   let datafetch = async () => {
 
@@ -10,7 +12,7 @@ export default async function App({ children }) {
       const client = new S3Client({ region: "us-west-2" });
       const response = await client.send(
         new GetObjectCommand({
-          Bucket: process.env.BUCKET || "test-bucket-raghrams",
+          Bucket: process.env.BUCKET,
           Key: "helloworld.json",
         }),
       );
