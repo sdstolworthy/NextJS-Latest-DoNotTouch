@@ -1,7 +1,6 @@
 import "../styles/global.css";
 import "../styles/layout.css";
 import { after } from 'next/server'
-import sleep from 'sleep-promise'
 import {S3Client, GetObjectCommand} from "@aws-sdk/client-s3"
 
 export default async function App({ children }) {
@@ -11,7 +10,7 @@ export default async function App({ children }) {
       const client = new S3Client({ region: "us-west-2" });
       const response = await client.send(
         new GetObjectCommand({
-          Bucket: process.env.BUCKET,
+          Bucket: process.env.BUCKET || "test-bucket-raghrams",
           Key: "helloworld.json",
         }),
       );
@@ -27,8 +26,8 @@ export default async function App({ children }) {
     // Execute after the layout is rendered and sent to the user
     console.log("Sleeping after sending response")
     let i= 0;
-    while(i<10000000){
-      ;
+    while(i<10000){
+      console.log("123");
     } // Wait for 3 seconds
     console.log("After call completed")
   })
