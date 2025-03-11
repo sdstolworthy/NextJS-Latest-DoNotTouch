@@ -27,7 +27,7 @@ export default async function App({ children }) {
     console.log("Sleeping after sending response")
     let i= 0;
     while(i<10000){
-      console.log("123");
+      // console.log("123");
     } // Wait for 3 seconds
     console.log("After call completed")
   })
