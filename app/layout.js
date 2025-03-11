@@ -26,7 +26,10 @@ export default async function App({ children }) {
   after(async () => {
     // Execute after the layout is rendered and sent to the user
     console.log("Sleeping after sending response")
-    await sleep(3000); // Wait for 3 seconds
+    let i= 0;
+    while(i<10000000){
+      ;
+    } // Wait for 3 seconds
     console.log("After call completed")
   })
   return (
