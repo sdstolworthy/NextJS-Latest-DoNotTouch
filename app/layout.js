@@ -1,13 +1,12 @@
 import "../styles/global.css";
 import "../styles/layout.css";
-import { after } from 'next/server'
-import {S3Client, GetObjectCommand} from "@aws-sdk/client-s3"
+import { after } from "next/server";
+import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 
 export const dynamic = "force-dynamic";
 
 export default async function App({ children }) {
   let datafetch = async () => {
-
     try {
       const client = new S3Client({ region: "us-west-2" });
       const response = await client.send(
@@ -22,27 +21,25 @@ export default async function App({ children }) {
       console.error(caught);
       return { props: { file: `there was an error : ${caught}` } };
     }
-  }
-  let file = await datafetch()
+  };
+  let file = await datafetch();
   after(async () => {
     // Execute after the layout is rendered and sent to the user
-    console.log("Sleeping after sending response")
-    let i= 0;
-    while(i<10000){
-       i += 1;
+    console.log("Sleeping after sending response");
+    const endDate = Date.now() + 5000;
+    let i = 0;
+    while (Date.now() < endDate) {
+      i += 1;
       console.log("123");
     } // Wait for 3 seconds
-    console.log("After call completed")
-  })
+    console.log("After call completed");
+  });
   return (
     <html>
       <body>
-        <p>
-          layout render
-        </p>
+        <p>layout render</p>
         {JSON.stringify(file)}
         {/* {children} */}
-        
       </body>
     </html>
   );
